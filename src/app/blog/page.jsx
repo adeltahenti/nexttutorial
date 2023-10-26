@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styles from './page.module.css';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 async function getData() {
   // All 10 seconds is revalidated
@@ -14,7 +15,7 @@ async function getData() {
   });
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    return notFound();
   }
 
   return res.json();

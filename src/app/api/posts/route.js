@@ -9,7 +9,7 @@ export const GET = async (req) => {
       },
     });
 
-    return NextResponse.json(posts);
+    return NextResponse.json(posts, { status: 200 });
   } catch (error) {
     return new NextResponse('Database Error', { status: 500 });
   }
