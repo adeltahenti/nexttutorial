@@ -2,6 +2,7 @@ import { Montserrat } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/navbar/Navbar$';
 import Footer from '@/components/footer/Footer$';
+import { ThemeProvider } from '@/context/ThemeContext$';
 
 const montserrat = Montserrat({
   weight: ['300', '400', '500', '600', '700'],
@@ -17,11 +18,13 @@ const RootLayout = ({ children }) => {
   return (
     <html lang='fr'>
       <body className={montserrat.className}>
-        <div className='container'>
-          <Navbar />
-          {children}
-          <Footer />
-        </div>
+        <ThemeProvider>
+          <div className='container'>
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
